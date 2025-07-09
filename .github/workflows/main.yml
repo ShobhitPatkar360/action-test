@@ -1,17 +1,25 @@
-name: Branch testing Action
+# .github/workflows/build.yml (on main branch)
+name: Build from main
 
 on:
   workflow_dispatch:
+    inputs:
+      branch_name:
+        description: 'Enter the name of the branch to checkout'
+        required: true
+        default: 'main'
+        type: string 
 
 jobs:
-  manual-job:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - name: Step 1
+      - name: Checkout dev code
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.branch_name }}
+
+      - name: Run your code
         run: |
-          echo "This is Devops Branch (hard coded) !"
-          echo "This is  ${GITHUB_REF##*/} Branch (variable used) !"
-      - name: Step 2 updated
-        run: |
-          echo "This is Devops Branch (hard coded) !"
-          echo "This is  ${GITHUB_REF##*/} Branch (variable used) !"          
+          echo "Running code of your provided branch: ${{ inputs.branch_name }}"
+          echo "${cat index.html}"
