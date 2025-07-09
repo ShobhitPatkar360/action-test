@@ -22,4 +22,4 @@ jobs:
       - name: Run your code
         run: |
           echo "Running code of your provided branch: ${{ inputs.branch_name }}"
-          echo "${cat index.html}"
+          echo "$(cat ./index.html)"
