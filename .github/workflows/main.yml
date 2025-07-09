@@ -9,5 +9,5 @@ jobs:
     steps:
       - name: Say Hello
         run: |
-          echo "This is main Branch (hard coded) !"
+          echo "This is dev Branch (hard coded) !"
           echo "This is  ${GITHUB_REF##*/} Branch (variable used) !"
