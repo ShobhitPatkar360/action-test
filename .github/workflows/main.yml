@@ -1,0 +1,13 @@
+name: Branch testing Action
+
+on:
+  workflow_dispatch:
+
+jobs:
+  manual-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Say Hello
+        run: |
+          echo "This is main Branch (hard coded) !"
+          echo "This is  ${GITHUB_REF##*/} Branch (variable used) !"
